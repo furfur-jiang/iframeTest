@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    登录页面
+    <div id="oDiv"></div>
+    <button id="btn">关闭</button>
+  </div>
+  <script>
+    let btn = document.getElementById('btn')
+    btn.onclick = ()=>{
+      window.parent.postMessage('close','*')//子传父
+    }
+    window.addEventListener('message',(event)=>{
+      let oDiv = document.getElementById('oDiv')
+      oDiv.innerText = event.data
+    })
+  </script>
+</body>
+</html>

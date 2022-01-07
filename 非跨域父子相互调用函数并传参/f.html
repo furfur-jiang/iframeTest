@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">调用子函数</button>
+    <iframe name="s" src="s.html" id="s"></iframe>
+    <script>
+      let btn = document.getElementById('btn')
+      //保证文档和资源加载完成两种方式： 1.readyState 2.onload
+      
+      //1
+      btn.onclick = () => {
+        //文档和所有子资源已完成加载
+         if(s.document.readyState === 'complete'){
+           s.changColor('red')
+         }
+      }
+      
+      //2
+      s.onload = function () {
+        btn.onclick = () => {
+          s.changColor('red')
+        }
+      }
+
+      function changColor(color) {
+        btn.style.background = color
+      }
+    </script>
+  </body>
+</html>
